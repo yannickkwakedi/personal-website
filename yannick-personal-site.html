@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yannick Kwakedi</title>
+  <meta name="description" content="Yannick Kwakedi — Maker of things that matter. Building AI consulting and e-commerce ventures in Ottawa-Gatineau, Canada." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --ink: #111110;
+      --muted: #888884;
+      --accent: #1B4FD8;
+      --rule: #e2e2de;
+    }
+
+    [data-theme="dark"] {
+      --bg: #000000;
+      --ink: #ffffff;
+      --muted: #666662;
+      --accent: #5b7ff5;
+      --rule: #222220;
+    }
+
+    body {
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #ffffff;
+      color-scheme: light only;
+    }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--muted);
+      font-family: 'Geist', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .theme-toggle:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    body {
+      font-family: 'Geist', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* NAV */
+    .nav-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-right a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .nav-right a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      padding: 7rem 0 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 i {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .hero-p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .hero-p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .hero-meta { text-align: right; }
+
+    .hero-meta-item {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta-item span {
+      color: var(--ink);
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.875rem;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 4rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* VENTURES */
+    .venture {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .venture-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .venture-type {
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .venture-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+
+    .venture-desc strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .venture-status {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .venture-status::before {
+      content: '→ ';
+      color: var(--accent);
+    }
+
+    /* ABOUT */
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 2.5rem 0 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .about-p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .about-p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.85rem;
+    }
+
+    .fact-row:first-child { border-top: 1px solid var(--rule); }
+
+    .fact-key { color: var(--muted); }
+    .fact-val { color: var(--ink); font-weight: 500; text-align: right; }
+
+    /* INSIGHTS */
+    .insight {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--ink);
+      transition: opacity 0.15s;
+    }
+
+    .insight:last-child { border-bottom: none; }
+    .insight:hover { opacity: 0.55; }
+
+    .insight-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--rule);
+      line-height: 1;
+      padding-top: 0.15rem;
+    }
+
+    .insight-topic {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .insight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .insight-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 560px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: 'Geist', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 0.6rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--rule);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--ink);
+    }
+
+    .form-group textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--ink);
+      color: var(--ink);
+      font-family: 'Geist', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding-bottom: 2px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .form-success {
+      display: none;
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* CONTACT */
+    .contact-block {
+      padding: 5rem 0 6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-big i {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* FADE */
+    .fade {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade.in { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-meta { text-align: left; margin-top: 1rem; }
+      .venture { grid-template-columns: 1fr; gap: 0.75rem; }
+      .about-body { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-right { gap: 1.2rem; }
+      .section-header { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo">Yannick Kwakedi</a>
+    <div class="nav-right">
+      <a href="#ventures">Work</a>
+      <a href="#goals">Vision</a>
+      <a href="#currently">Now</a>
+      <a href="#milestones">Milestones</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Dark</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero fade">
+    <div class="hero-eyebrow">Maker of things that matter.</div>
+    <h1>Building at the<br/>edge of <i>AI</i><br/>and business.</h1>
+    <div class="hero-body" style="grid-template-columns: 1fr; max-width: 540px;">
+      <p class="hero-p">
+        We are building an <strong>AI consulting platform</strong> and an <strong>e-commerce store run by AI agents</strong> — built on the same conviction: AI should work for the people who need it most.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- VENTURES -->
+  <section id="ventures">
+    <div class="section-header fade">
+      <span class="section-label">What I'm building</span>
+      <h2 class="section-title">Two bets.</h2>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">ForestAI</div>
+        <div class="venture-type">AI Consulting</div>
+      </div>
+      <div>
+        <p class="venture-desc">An AI adoption platform for <strong>Canadian SMEs</strong>. I work with small business owners who know AI matters but don't know where to start — cutting through the noise to deploy tools that actually move the needle.</p>
+        <div class="venture-status">forest-ai-assessment.replit.app</div>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Marketscenter</div>
+        <div class="venture-type">E-Commerce</div>
+      </div>
+      <div>
+        <p class="venture-desc">A <strong>Shopify-based tech gadgets store</strong> serving Canada and the US. Custom-built theme, CAD/USD switching, PIPEDA-compliant, fulfilled through CJDropshipping.</p>
+        <div class="venture-status">Launching 2025</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header fade">
+      <span class="section-label">Background</span>
+      <h2 class="section-title">Who I am.</h2>
+    </div>
+    <div class="about-body fade" style="grid-template-columns: 1fr; max-width: 580px;">
+      <div>
+        <p class="about-p">I'm an entrepreneur at heart. Not by title — by instinct. I've always been drawn to the question of <strong>what could be built</strong>, and I haven't stopped asking it since.</p>
+        <p class="about-p">What drives me is the intersection of <strong>innovation and execution</strong>. Ideas are cheap; the discipline to ship, iterate, and improve is everything. I build in public, learn by doing, and treat every setback as data.</p>
+        <p class="about-p">I believe we're at an inflection point — AI is reshaping how businesses operate, and most small business owners are being left behind. Closing that gap is what gets me out of bed. <strong>Continuous improvement</strong> isn't a value I post on a wall — it's the operating system I run on.</p>
+        <p class="about-p">I came up through healthcare administration — four years in a system where decisions have real consequences and execution is non-negotiable. That experience shaped how I think about <strong>building things that actually work</strong> in the real world, not just in pitch decks.</p>
+        <p class="about-p">Now I channel that into building companies at the frontier of AI — with a deep conviction that <strong>technology should serve people</strong>, that Canadian businesses deserve a seat at the global table, and that the best time to build is right now.</p>
+        <p class="about-p">Ottawa-Gatineau based. Always building the next thing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <div class="section-header fade">
+      <span class="section-label">Vision</span>
+      <h2 class="section-title">What I'm after.</h2>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Agents &amp; Automation</div>
+        <div class="venture-type">Agentic AI</div>
+      </div>
+      <div>
+        <p class="venture-desc">Building autonomous systems that handle real business workflows without human intervention — but with <strong>human control and authorization</strong> at every critical decision point. Automation that businesses can actually trust.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">SME-focused SaaS</div>
+        <div class="venture-type">Product</div>
+      </div>
+      <div>
+        <p class="venture-desc">Productizing AI into <strong>affordable, accessible tools</strong> built specifically for the businesses that need it most — and are most overlooked by the industry. Less complexity, more impact.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">AI Infrastructure</div>
+        <div class="venture-type">Systems</div>
+      </div>
+      <div>
+        <p class="venture-desc">The plumbing that makes it all work — <strong>multi-agent orchestration</strong>, automated pipelines, and systems architected to scale without scaling headcount. Building the layer between raw AI models and real business outcomes.</p>
+      </div>
+    </div>
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">AI Security</div>
+        <div class="venture-type">Protection</div>
+      </div>
+      <div>
+        <p class="venture-desc">As AI becomes embedded in how businesses operate, the attack surface grows with it. The industry moves fast — <strong>security and responsibility can't be an afterthought</strong>. I build with protection in mind from day one: data privacy, access controls, and safeguards that keep businesses and their clients safe in an increasingly automated world.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Canada in the Arena</div>
+        <div class="venture-type">Mission</div>
+      </div>
+      <div>
+        <p class="venture-desc">Canada has world-class AI research, exceptional talent, and a thriving SME economy — yet too few Canadian businesses are at the table of <strong>global AI innovation</strong>. The goal is to close that gap — one business at a time, one tool at a time — and position Canadian SMEs as genuine players in the global AI economy. By helping Canadian SMEs adopt AI, improve their operations, and build real competitive capabilities, we strengthen not just individual businesses but the entire <strong>Canadian economic fabric</strong>. AI adoption isn't a luxury — it's a sovereignty issue. The countries and businesses that move now will define the next decade. <strong>Canada should be leading, not following.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="insights">
+    <div class="section-header fade">
+      <span class="section-label">Writing</span>
+      <h2 class="section-title">Things I think about.</h2>
+    </div>
+
+    <a href="#" class="insight fade">
+      <div class="insight-num">01</div>
+      <div>
+        <div class="insight-topic">AI</div>
+        <div class="insight-title">The real AI adoption gap isn't technical — it's psychological.</div>
+        <p class="insight-desc">Most SME owners aren't against AI. They're overwhelmed by it. Here's what actually builds trust and gets things moving.</p>
+      </div>
+    </a>
+
+    <a href="#" class="insight fade">
+      <div class="insight-num">02</div>
+      <div>
+        <div class="insight-topic">Entrepreneurship</div>
+        <div class="insight-title">Running three ventures at once: what nobody tells you.</div>
+        <p class="insight-desc">Context switching, prioritization, and the systems I use to keep everything from collapsing.</p>
+      </div>
+    </a>
+
+    <a href="#" class="insight fade">
+      <div class="insight-num">03</div>
+      <div>
+        <div class="insight-topic">E-Commerce</div>
+        <div class="insight-title">Building a premium Shopify store on a bootstrap budget.</div>
+        <p class="insight-desc">Custom themes, CAD/USD switching, and the details that make a store feel like it costs ten times more than it does.</p>
+      </div>
+    </a>
+  </section>
+
+  <!-- CURRENTLY -->
+  <section id="currently">
+    <div class="section-header fade">
+      <span class="section-label">Right now</span>
+      <h2 class="section-title">Currently.</h2>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Building</div>
+        <div class="venture-type">Active</div>
+      </div>
+      <div>
+        <p class="venture-desc">Finalizing <strong>Marketscenter</strong> for go-live — last mile on collections, product tagging, and ad campaigns. Iterating on <strong>ForestAI</strong> post-buildathon with new features and client outreach.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Learning</div>
+        <div class="venture-type">In Progress</div>
+      </div>
+      <div>
+        <p class="venture-desc">Going deeper on <strong>agentic AI architecture</strong> — multi-agent orchestration, tool use, and how to build systems that are both autonomous and controllable. Also studying how the best AI SaaS products are structured and priced for SMEs.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Thinking About</div>
+        <div class="venture-type">Next</div>
+      </div>
+      <div>
+        <p class="venture-desc">What the next chapter of <strong>ForestAI</strong> looks like as a productized SaaS — moving from consulting to a scalable, self-serve platform for Canadian SMEs. And what it means to build AI infrastructure that is genuinely <strong>secure by design</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MILESTONES -->
+  <section id="milestones">
+    <div class="section-header fade">
+      <span class="section-label">Proof of work</span>
+      <h2 class="section-title">Milestones.</h2>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">2025</div>
+        <div class="venture-type">ForestAI Scanner</div>
+      </div>
+      <div>
+        <p class="venture-desc">Built and deployed the <strong>ForestAI Scanner</strong> at the Replit Agent 4 Buildathon — from zero to live in under two weeks. Claude API integration, bilingual toggle, PDF report download, and automated email reports via Resend.</p>
+        <div class="venture-status">forest-ai-assessment.replit.app</div>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">2025</div>
+        <div class="venture-type">Marketscenter</div>
+      </div>
+      <div>
+        <p class="venture-desc">Built a <strong>full Shopify store from scratch</strong> — custom Apple-inspired theme, 15-product catalog, CAD/USD switcher, PIPEDA-compliant policy pages, cart drawer, live search, and mobile menu. No template. No agency.</p>
+        <div class="venture-status">Launching soon</div>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">2025</div>
+        <div class="venture-type">FOREST System</div>
+      </div>
+      <div>
+        <p class="venture-desc">Designed the <strong>FOREST multi-agent architecture</strong> — an orchestrator with specialized sub-agents handling email, product research, social media, file management, and calendar briefing. Built first as internal tooling for Marketscenter.</p>
+        <div class="venture-status">In development</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <div class="section-header fade">
+      <span class="section-label">Daily stack</span>
+      <h2 class="section-title">Tools I use.</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0;" class="fade">
+      <div style="padding: 1.75rem 0; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Claude</div>
+        <div style="font-size: 0.75rem; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;">Anthropic</div>
+        <div style="font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6;">Strategic thinking, writing, code, and agentic workflows. My primary AI layer.</div>
+      </div>
+      <div style="padding: 1.75rem 0 1.75rem 2rem; border-bottom: 1px solid var(--rule);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">ChatGPT</div>
+        <div style="font-size: 0.75rem; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;">OpenAI</div>
+        <div style="font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6;">Rapid ideation, research drafts, and cross-checking outputs from other models.</div>
+      </div>
+      <div style="padding: 1.75rem 0; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Gemini</div>
+        <div style="font-size: 0.75rem; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;">Google</div>
+        <div style="font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6;">Deep research, long-context analysis, and Google ecosystem integration.</div>
+      </div>
+      <div style="padding: 1.75rem 0 1.75rem 2rem; border-bottom: 1px solid var(--rule);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Replit</div>
+        <div style="font-size: 0.75rem; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;">Development</div>
+        <div style="font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6;">Building and deploying AI-powered apps fast. Where ForestAI was born.</div>
+      </div>
+      <div style="padding: 1.75rem 0; border-right: 1px solid var(--rule);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Notion</div>
+        <div style="font-size: 0.75rem; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;">Operations</div>
+        <div style="font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6;">The operating system for all three ventures — planning, docs, and execution tracking.</div>
+      </div>
+      <div style="padding: 1.75rem 0 1.75rem 2rem;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Shopify AI</div>
+        <div style="font-size: 0.75rem; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem;">E-Commerce</div>
+        <div style="font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.6;">AI-powered store management, product descriptions, and commerce automation for Marketscenter.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN TO -->
+  <section id="open-to">
+    <div class="section-header fade">
+      <span class="section-label">Opportunities</span>
+      <h2 class="section-title">Open to.</h2>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">AI Consulting</div>
+        <div class="venture-type">ForestAI</div>
+      </div>
+      <div>
+        <p class="venture-desc">Canadian SMEs looking to <strong>adopt AI with clarity</strong> — not hype. Retainer or project-based. We start with where you actually are, not where vendors want you to be.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Collaborations</div>
+        <div class="venture-type">Founders & Builders</div>
+      </div>
+      <div>
+        <p class="venture-desc">If you're building something at the intersection of <strong>AI, SaaS, or e-commerce</strong> and think our visions align — let's talk. I'm interested in partnerships that create real leverage, not just noise.</p>
+      </div>
+    </div>
+
+    <div class="venture fade">
+      <div>
+        <div class="venture-name">Pilot Projects</div>
+        <div class="venture-type">Early Access</div>
+      </div>
+      <div>
+        <p class="venture-desc">Businesses willing to be <strong>early adopters</strong> of AI tools I'm building — in exchange for honest feedback, reduced rates, and a direct line to the product roadmap.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-block fade">
+      <div class="contact-big">Got a project?<br/>Let's <i>talk.</i></div>
+      <p style="font-size: 0.95rem; font-weight: 300; color: var(--muted); max-width: 480px; line-height: 1.8; margin-bottom: 0;">Whether you're a Canadian business looking to adopt AI, a founder who wants to collaborate, or someone who just wants to connect — I read every message and respond to the ones that matter.</p>
+
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Yannick Kwakedi" required />
+          </div>
+          <div class="form-group">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" name="business" placeholder="ForestAI Inc." />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me what you're working on..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message →</button>
+        <div class="form-success" id="formSuccess">✓ Message sent — I'll be in touch soon.</div>
+      </form>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule);">
+        <div class="contact-links">
+          <a href="https://www.reddit.com/user/yannickkwakedi" target="_blank" class="contact-link">Reddit</a>
+          <a href="https://x.com/YannKwakedi" target="_blank" class="contact-link">X</a>
+          <a href="https://instagram.com/yannick_kwakedi" target="_blank" class="contact-link">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="fade">
+    <span>© 2025 Yannick Kwakedi. All rights reserved.</span>
+  </footer>
+
+</div>
+
+<script>
+  const els = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(el => io.observe(el));
+
+  document.documentElement.removeAttribute('data-theme');
+  document.getElementById('themeBtn').textContent = 'Dark';
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.removeAttribute('data-theme');
+      btn.textContent = 'Dark';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      btn.textContent = 'Light';
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
+      .then(() => {
+        form.reset();
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(() => alert('Something went wrong. Please email me directly at ykwakedi@gmail.com'));
+  }
+</script>
+</body>
+</html>
