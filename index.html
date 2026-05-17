@@ -893,21 +893,7 @@
     }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    fetch('https://yannickkwakedi.com/', { 
-      method: 'POST', 
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
-      body: new URLSearchParams(data).toString() 
-    })
-      .then(() => {
-        form.reset();
-        document.getElementById('formSuccess').style.display = 'block';
-      })
-      .catch(() => alert('Something went wrong. Please email me directly at ykwakedi@gmail.com'));
-  }
+  
 </script>
 </body>
 </html>
