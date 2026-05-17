@@ -897,7 +897,11 @@
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
+    fetch('https://yannickkwakedi.com/', { 
+      method: 'POST', 
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
+      body: new URLSearchParams(data).toString() 
+    })
       .then(() => {
         form.reset();
         document.getElementById('formSuccess').style.display = 'block';
